@@ -1,0 +1,20 @@
+{
+  "name": "home-server",
+  "version": "1.0.0",
+  "description": "home-server",
+  "homepage": "https://github.com/Chuwenni/home-website#readme",
+  "bugs": {
+    "url": "https://github.com/Chuwenni/home-website/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chuwenni/home-website.git"
+  },
+  "license": "ISC",
+  "author": "chuweni & mark",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
