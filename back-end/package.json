@@ -1,14 +1,14 @@
 {
-  "name": "home-server",
+  "name": "xyber-server",
   "version": "1.0.0",
-  "description": "home-server",
-  "homepage": "https://github.com/Chuwenni/home-website#readme",
+  "description": "making a non hackable website",
+  "homepage": "https://github.com/Chuwenni/Xyber#readme",
   "bugs": {
-    "url": "https://github.com/Chuwenni/home-website/issues"
+    "url": "https://github.com/Chuwenni/Xyber/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Chuwenni/home-website.git"
+    "url": "git+https://github.com/Chuwenni/Xyber.git"
   },
   "license": "ISC",
   "author": "chuweni & mark",
