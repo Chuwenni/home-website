@@ -1,11 +1,13 @@
-import { useState } from 'react'
-
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import menuButton from './components/menuButton/menuButton'
 function App() {
 
-  return (
-    <>
-      
-    </>
+  return (   
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<menuButton/>}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
