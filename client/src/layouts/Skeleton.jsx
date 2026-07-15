@@ -1,51 +1,26 @@
-import React from 'react'
+import styles from '../assets/style'
 
-const Skeleton = () => {
-
-  const containerStyle = {
-    backgroundColor: "black",
-    width: 50,
-    height: 50
-  }
+export default function Skeleton({ count = 20 }) {
 
   return (
-    <>
-      <div className="productContainer" style={containerStyle}>
-        <div className="products">
-          <div className="label1"></div>
-          <div className="label2"></div>
-        </div>
-        <div className="products">
-          <div className="label1"></div>
-          <div className="label2"></div>
-        </div>
-        <div className="products">
-          <div className="label1"></div>
-          <div className="label2"></div>
-        </div>
-        <div className="products">
-          <div className="label1"></div>
-          <div className="label2"></div>
-        </div>
-        <div className="products">
-          <div className="label1"></div>
-          <div className="label2"></div>
-        </div>
-        <div className="products">
-          <div className="label1"></div>
-          <div className="label2"></div>
-        </div>
-        <div className="products">
-          <div className="label1"></div>
-          <div className="label2"></div>
-        </div>
-        <div className="products">
-          <div className="label1"></div>
-          <div className="label2"></div>
-        </div>
-      </div>
-    </>
-  )
-}
+    <div style={styles.container}>
+      {Array.from({ length: count }).map((_, index) => (
+        <div key={index} style={styles.card}>
+          <div style={styles.image}></div>
 
-export default Skeleton
+          <div style={styles.content}>
+            <div style={styles.title}></div>
+            <div style={styles.subtitle}></div>
+
+            <div style={styles.row}>
+              <div style={styles.price}></div>
+              <div style={styles.rating}></div>
+            </div>
+
+            <div style={styles.button}></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
