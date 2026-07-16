@@ -5,6 +5,7 @@ const styles = {
       gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
       gap: "40px",
       padding: "20px",
+      marginTop: 50,
     },
 
     card: {
@@ -74,8 +75,9 @@ const styles = {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      padding: "30px 50px",
-      zIndex: "2"
+      padding: "30px 35px",
+      zIndex: "2",
+      backgroundColor: "white"
     },
     subtitleMenu: {
       width: 100,
@@ -93,6 +95,7 @@ const styles = {
       width: 300,
       height: "50%",
       display: "flex",
+      alignItems: 'center',
       gap: 20
     }
   };

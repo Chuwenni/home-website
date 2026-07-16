@@ -1,15 +1,15 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Homepage from "./pages/Homepage";
-import Skeleton from "./layouts/Skeleton";
-import Products from "./components/Products";
+import Login from "./pages/Login";
+import Menubar from "./layouts/Menubar";
 function App() {
 
   return (   
     <BrowserRouter>
+      <Menubar/>
       <Routes>
         <Route path="/" element={<Homepage/>}/>
-        <Route path="/products" element={<Products/>}/>
-        <Route path="/skeleton" element={<Skeleton/>}/>
+        <Route path="/login" element={<Login/>}/>
       </Routes>
     </BrowserRouter>
   )
