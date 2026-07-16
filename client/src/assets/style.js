@@ -67,13 +67,15 @@ const styles = {
       borderRadius: "8px",
     },
     menubar:{
+      position: "Fixed",
       width: '100%',
       height: "50px",
       borderBottom: "2px solid",
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      padding: "30px 50px"
+      padding: "30px 50px",
+      zIndex: "2"
     },
     subtitleMenu: {
       width: 100,

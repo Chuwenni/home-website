@@ -1,7 +1,7 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Skeleton from "./layouts/Skeleton";
-import Products from "./pages/Products";
+import Products from "./components/Products";
 function App() {
 
   return (   

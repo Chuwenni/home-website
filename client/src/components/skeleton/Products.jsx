@@ -1,6 +1,6 @@
 import styles from '../../assets/style'
 
-export default function products({count}) {
+export default function Products({count}) {
   return (
     <div style={styles.container}>
       {Array.from({ length: count }).map((_, index) => (
