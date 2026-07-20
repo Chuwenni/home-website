@@ -5,7 +5,6 @@ const styles = {
       gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
       gap: "40px",
       padding: "20px",
-      marginTop: 50,
     },
 
     card: {
@@ -97,7 +96,63 @@ const styles = {
       display: "flex",
       alignItems: 'center',
       gap: 20
-    }
+    },
+    menubar: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: 70,
+    background: "#ffffff",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "0 40px",
+    boxSizing: "border-box",
+    boxShadow: "0 2px 10px rgba(0,0,0,.08)",
+    zIndex: 1000,
+},
+
+logo: {
+    margin: 0,
+    fontSize: 28,
+    fontWeight: "700",
+    color: "#2563eb",
+    cursor: "pointer"
+},
+
+links: {
+    display: "flex",
+    gap: 35,
+    alignItems: "center"
+},
+
+link: {
+    textDecoration: "none",
+    color: "#555",
+    fontSize: 16,
+    fontWeight: 500,
+    transition: ".25s"
+},
+
+activeLink: {
+    textDecoration: "none",
+    color: "#2563eb",
+    fontSize: 16,
+    fontWeight: "700",
+    borderBottom: "3px solid #2563eb",
+    paddingBottom: 4
+},
+
+loginButton: {
+    textDecoration: "none",
+    background: "#2563eb",
+    color: "white",
+    padding: "10px 22px",
+    borderRadius: 8,
+    fontWeight: 600,
+    transition: ".25s"
+},
   };
 
 export default styles;

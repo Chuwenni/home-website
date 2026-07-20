@@ -2,7 +2,7 @@ import styles from '../../assets/style'
 
 export default function Products({count}) {
   return (
-    <div style={styles.container}>
+    <div style={styles.container} className='products'>
       {Array.from({ length: count }).map((_, index) => (
         <div key={index} style={styles.card}>
           <div style={styles.image}></div>

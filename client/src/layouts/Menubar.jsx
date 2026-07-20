@@ -1,19 +1,21 @@
-import {Link} from 'react-router-dom'
-import React from 'react'
-import style from '../assets/style'
-const Menubar = () => {
-  return (
-    <div style={style.menubar}>
-        <div style={style.titleDiv}>
-            <Link to={"/"}>Home</Link>
-            <Link to={"/shops"}>Shops</Link>
-            <Link to={"/myCart"}>My Cart</Link>
-            <Link to={"/myShop"}>My Shop</Link>
-        </div>
-        {/* <Link style={style.profile} to={"/profile"}></Link> */}
-        <Link to={"/login"}>Login First</Link>
-    </div>
-  )
-}
+import { NavLink } from "react-router-dom";
+import "../assets/MenuBar.css";
 
-export default Menubar
+export default function Menubar() {
+    return (
+        <nav className="navbar">
+            <h2 className="logo">ShopEase</h2>
+
+            <div className="nav-links">
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/shops">Shops</NavLink>
+                <NavLink to="/myCart">My Cart</NavLink>
+                <NavLink to="/myShop">My Shop</NavLink>
+            </div>
+
+            <NavLink className="login-btn" to="/login">
+                Login
+            </NavLink>
+        </nav>
+    );
+}
