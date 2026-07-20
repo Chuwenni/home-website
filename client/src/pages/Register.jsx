@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import axios from 'axios';
+import {useToast} from '../Context/ToastContext'
 
 export default function Register() {
 
@@ -11,6 +12,8 @@ export default function Register() {
         confirmPassword: ""
     });
 
+    const { showToast } = useToast();
+
     function handleChange(e) {
         setForm({
             ...form,
@@ -18,10 +21,22 @@ export default function Register() {
         });
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-
-        console.log(form);
+        try {
+            const response = await axios.post("http://localhost:3500/register", form,
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+            if(response.status == 200){
+                showToast(response.data.message, "success")
+            }
+              
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     return (
@@ -66,7 +81,7 @@ export default function Register() {
                         onChange={handleChange}
                     />
 
-                    <button>Create Account</button>
+                    <button onClick={(e) => handleSubmit(e)}>Create Account</button>
 
                 </form>
 

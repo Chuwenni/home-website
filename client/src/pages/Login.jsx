@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useToast } from "../Context/ToastContext";
+import axios from 'axios';
 export default function Login() {
     const [form, setForm] = useState({
         email: "",
@@ -19,9 +20,13 @@ export default function Login() {
         }));
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        console.log(form);
+        try{
+            const result = await axios.post("http://localhost:3500/login", form);
+        }catch(err){
+            
+        }
     }
 
     return (
@@ -64,10 +69,7 @@ export default function Login() {
                             Forgot Password?
                         </Link>
                     </div>
-
-                    <button type="submit" onClick={() => showToast("Login Successful!", "success")}>
-                        Login
-                    </button>
+                    <button type="submit" onClick={(e) => handleSubmit(e)}>Login</button>
                 </form>
 
                 <p className="auth-footer">

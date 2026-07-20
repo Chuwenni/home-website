@@ -1,6 +1,7 @@
-import express from 'express';
+const express = require('express')
+const { Login, Register} = require('../controller/authentication')
 const router = express.Router();
 
-router.route("")
-    .get(Login)
-    .post(register)
+router.post("/login", Login)
+router.post("/register", Register)
+module.exports= router
