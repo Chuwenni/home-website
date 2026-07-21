@@ -1,11 +1,12 @@
 const User = require("../models/userSchema")
 const bcrypt = require("bcryptjs")
 
-const Login = (req,res) => {
+const Login = async (req,res) => {
     console.log(req.body);
     const {email, password} = req.body;
+    const userDB = await User.find({email: email})
 
-    res.send(email, password);
+    return res.json(userDB);
 }
 
 const Register = async (req, res) => {

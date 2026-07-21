@@ -30,12 +30,14 @@ export default function Register() {
                         'Content-Type': 'application/json'
                     }
                 })
-            if(response.status == 200){
-                showToast(response.data.message, "success")
-            }
+            
+                console.log(response)
+                if(response.status == 200){
+                    showToast(response.data.message, "success")
+                }
               
         } catch (err) {
-            console.log(err)
+            showToast(err.error, 'error')
         }
     }
 

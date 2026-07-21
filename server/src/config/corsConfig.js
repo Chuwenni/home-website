@@ -1,7 +1,15 @@
+const whilelist = [
+    "http://localhost:5173",
+    "https://cstj8wfr-5173.asse.devtunnels.ms/"
+]
+
 const corsConfig = {
-    origin: "http://localhost:5173",
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    exposedHeaders: ['X-Total-Count'],
-    credentials: true,
+    origin: (origin, callback)=>{
+        if(!origin || whitelist.includes(origin)){
+            callback(null, true)
+        }else{
+            callback(new Error("Block by CORS"))
+        }
+    },
+    credentials: true
 }

@@ -24,6 +24,12 @@ export default function Login() {
         e.preventDefault();
         try{
             const result = await axios.post("http://localhost:3500/login", form);
+
+            console.log(result)
+
+            if(result.status == 200){
+                showToast("Login successful", "success")
+            }
         }catch(err){
             
         }
