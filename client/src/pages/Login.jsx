@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "../Context/ToastContext";
 import axios from 'axios';
 export default function Login() {
@@ -9,7 +9,9 @@ export default function Login() {
         remember: false,
     });
 
-    const { showToast } = useToast();
+    const { showToast, durations } = useToast();
+
+    const navigate = useNavigate();
 
     function handleChange(e) {
         const { name, value, type, checked } = e.target;
@@ -23,15 +25,21 @@ export default function Login() {
     async function handleSubmit(e) {
         e.preventDefault();
         try{
-            const result = await axios.post("http://localhost:3500/login", form);
+            const response = await axios.post("http://localhost:3500/login", form);
 
-            console.log(result)
+            const message = response.data.message;
+            const type = response.data.type;
 
-            if(result.status == 200){
-                showToast("Login successful", "success")
+            if(response.data.type != "success"){
+                showToast(message, type)
+            }else{
+                showToast(message, type)
+                setTimeout(() => {
+                    navigate('/', { replace: true })
+                }, durations.success)
             }
-        }catch(err){
-            
+        }catch(error){
+            showToast(error.message, "error")
         }
     }
 

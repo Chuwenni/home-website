@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import {useToast} from '../Context/ToastContext'
 
@@ -12,7 +12,9 @@ export default function Register() {
         confirmPassword: ""
     });
 
-    const { showToast } = useToast();
+    const { showToast, durations } = useToast();
+
+    const navigate = useNavigate();
 
     function handleChange(e) {
         setForm({
@@ -23,21 +25,35 @@ export default function Register() {
 
     async function handleSubmit(e) {
         e.preventDefault();
+
+        if(form.password != form.confirmPassword){
+            showToast("Passwords Mismatch!", "warning")
+            return
+        }
+
         try {
-            const response = await axios.post("http://localhost:3500/register", form,
+            const response = await axios.post("http://localhost:3500/register", 
+                form,
                 {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 })
-            
-                console.log(response)
-                if(response.status == 200){
-                    showToast(response.data.message, "success")
+                
+                const message = response.data.message;
+                const type = response.data.type;
+
+                if(response.data.type != "success"){
+                    showToast(message, type)
+                }else{
+                    showToast(message, type)
+                    setTimeout(()=>{
+                        navigate('/login', {replace: true})
+                    }, durations.success)
                 }
               
         } catch (err) {
-            showToast(err.error, 'error')
+            showToast(err.message, 'error')
         }
     }
 

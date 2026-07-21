@@ -3,7 +3,7 @@ import Toast from "../components/toast";
 
 const ToastContext = createContext();
 
-const durations = {
+export const durations = { // Exported so it can be imported directly if needed
     success: 2500,
     info: 3000,
     warning: 4000,
@@ -32,10 +32,10 @@ export function ToastProvider({ children }) {
         }, durations[type] || 3000);
     }
 
+    // Provide both showToast and durations
     return (
-        <ToastContext.Provider value={{ showToast }}>
+        <ToastContext.Provider value={{ showToast, durations }}>
             {children}
-
             <Toast
                 visible={toast.visible}
                 message={toast.message}
@@ -46,5 +46,9 @@ export function ToastProvider({ children }) {
 }
 
 export function useToast() {
-    return useContext(ToastContext);
-}
+    const context = useContext(ToastContext);
+    if (!context) {
+        throw new Error("useToast must be used within a ToastProvider");
+    }
+    return context;
+}   
