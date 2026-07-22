@@ -22,10 +22,12 @@ export default function Login() {
         }));
     }
 
+    const server = import.meta.env.VITE_SERVER;
+
     async function handleSubmit(e) {
         e.preventDefault();
         try{
-            const response = await axios.post("http://localhost:3500/login", form);
+            const response = await axios.post(`${server}/login`, form);
 
             const message = response.data.message;
             const type = response.data.type;

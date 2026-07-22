@@ -22,6 +22,7 @@ export default function Register() {
             [e.target.name]: e.target.value
         });
     }
+    const server = import.meta.env.VITE_SERVER;
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -31,8 +32,9 @@ export default function Register() {
             return
         }
 
+
         try {
-            const response = await axios.post("http://localhost:3500/register", 
+            const response = await axios.post(`${server}/register`, 
                 form,
                 {
                     headers: {
