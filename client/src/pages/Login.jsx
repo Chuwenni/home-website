@@ -2,12 +2,15 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "../Context/ToastContext";
 import axios from 'axios';
+
 export default function Login() {
     const [form, setForm] = useState({
         email: "",
         password: "",
         remember: false,
     });
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const { showToast, durations } = useToast();
 
@@ -26,22 +29,22 @@ export default function Login() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        try{
-            const response = await axios.post(`${server}/login`, form);
+        try {
+            const response = await axios.post(`${server}/login`, form, {withCredentials: true});
 
             const message = response.data.message;
             const type = response.data.type;
 
-            if(response.data.type != "success"){
-                showToast(message, type)
-            }else{
-                showToast(message, type)
+            if (response.data.type != "success") {
+                showToast(message, type);
+            } else {
+                showToast(message, type);
                 setTimeout(() => {
-                    navigate('/', { replace: true })
-                }, durations.success)
+                    navigate('/', { replace: true });
+                }, durations.success);
             }
-        }catch(error){
-            showToast(error.message, "error")
+        } catch (error) {
+            showToast(error.message, "error");
         }
     }
 
@@ -61,14 +64,25 @@ export default function Login() {
                         required
                     />
 
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={form.password}
-                        onChange={handleChange}
-                        required
-                    />
+                    
+                    <div className="password-wrapper">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            placeholder="Password"
+                            value={form.password}
+                            onChange={handleChange}
+                            required
+                        />
+
+                        <button
+                            type="button"
+                            className="password-toggle"
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {showPassword ? "Hide" : "Show"}
+                        </button>
+                    </div>
 
                     <div className="auth-options">
                         <label>
@@ -85,7 +99,10 @@ export default function Login() {
                             Forgot Password?
                         </Link>
                     </div>
-                    <button type="submit" onClick={(e) => handleSubmit(e)}>Login</button>
+
+                    <button type="submit">
+                        Login
+                    </button>
                 </form>
 
                 <p className="auth-footer">

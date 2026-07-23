@@ -101,7 +101,7 @@ export default function Register() {
                         onChange={handleChange}
                     />
 
-                    <button onClick={(e) => handleSubmit(e)}>Create Account</button>
+                    <button type="submit" onClick="handleSubmit">Create Account</button>
 
                 </form>
 

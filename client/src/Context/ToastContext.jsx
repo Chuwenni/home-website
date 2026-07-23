@@ -3,7 +3,7 @@ import Toast from "../components/toast";
 
 const ToastContext = createContext();
 
-export const durations = { // Exported so it can be imported directly if needed
+export const durations = {
     success: 2500,
     info: 3000,
     warning: 4000,
@@ -32,7 +32,6 @@ export function ToastProvider({ children }) {
         }, durations[type] || 3000);
     }
 
-    // Provide both showToast and durations
     return (
         <ToastContext.Provider value={{ showToast, durations }}>
             {children}

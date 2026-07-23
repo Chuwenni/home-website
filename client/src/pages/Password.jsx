@@ -31,7 +31,7 @@ export default function ForgotPassword() {
                         onChange={(e) => setEmail(e.target.value)}
                     />
 
-                    <button>Send Reset Link</button>
+                    <button onClick="handleSubmit" type="submit">Send Reset Link</button>
 
                 </form>
 
