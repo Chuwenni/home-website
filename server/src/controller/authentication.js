@@ -29,8 +29,8 @@ const Login = async (req,res) => {
             return res.json({message: "Email or Password is incorrect", type: "warning"})
         }
         const {accessToken, refreshToken} = genTokens(payload);
-        res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true, sameSite: 'strict' });
-        res.cookie('accessToken', accessToken, { httpOnly: true, secure: true, sameSite: 'strict' });
+        res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true, sameSite: 'none' });
+        res.cookie('accessToken', accessToken, { httpOnly: true, secure: true, sameSite: 'none' });
 
         return res.json({message: "Login Successful", type: "success"});
 

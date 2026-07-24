@@ -40,7 +40,7 @@ export default function Login() {
             } else {
                 showToast(message, type);
                 setTimeout(() => {
-                    navigate('/', { replace: true });
+                    navigate('/home', { replace: true });
                 }, durations.success);
             }
         } catch (error) {

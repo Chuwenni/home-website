@@ -84,12 +84,6 @@ const styles = {
       borderRadius: 20,
       background: "#e0e0e0",
     },
-    profile: {
-      background: "#e0e0e0",
-      width: 50,
-      height: 50,
-      borderRadius: "50%"
-    },
     titleDiv: {
       width: 300,
       height: "50%",

@@ -56,6 +56,13 @@
     margin-top: 70px;
 }
 
+.profile{
+    background: #e0e0e0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
 /* ---------- Tablet ---------- */
 
 @media (max-width:900px) {

@@ -1,18 +1,29 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Homepage from "./pages/Homepage";
+import MainHomepage from "./pages/Mainhomepage"
 import Login from "./pages/Login";
 import ForgotPassword from './pages/Password';
 import Register from "./pages/Register";
+import Products from './components/skeleton/Products'
+import { AppContext } from "./Context/appContext";
 function App() {
 
   return (   
     <BrowserRouter>
-      <Routes>
+      <AppContext>
+        <Routes>
+        <Route path="/" element={<MainHomepage/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/password' element={<ForgotPassword/>}/>
-        <Route path="/*" element={<Homepage/>}/>
+        <Route path="/home" element={<Homepage/>}>
+          <Route index element={<Products count={20}/>}/>
+          <Route path="shops"/>
+          <Route path="myCart"/>
+          <Route path="myShop"/>
+        </Route>
       </Routes>
+      </AppContext>
     </BrowserRouter>
   )
 }

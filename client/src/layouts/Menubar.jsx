@@ -1,21 +1,25 @@
 import { NavLink } from "react-router-dom";
 import "../assets/MenuBar.css";
-
+import { useApp } from "../Context/appContext";
 export default function Menubar() {
+
+    const { user } = useApp();
     return (
         <nav className="navbar">
             <h2 className="logo">ShopEase</h2>
 
             <div className="nav-links">
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/shops">Shops</NavLink>
-                <NavLink to="/myCart">My Cart</NavLink>
-                <NavLink to="/myShop">My Shop</NavLink>
+                <NavLink to="/home" end>Home</NavLink>
+                <NavLink to="/home/shops">Shops</NavLink>
+                <NavLink to="/home/myCart">My Cart</NavLink>
+                <NavLink to="/home/myShop">My Shop</NavLink>
             </div>
 
-            <NavLink className="login-btn" to="/login">
-                Login
-            </NavLink>
+            {user.isLogin
+            ?
+            <div className="profile"></div>
+            :
+            <NavLink className="login-btn" to="/login">Login</NavLink>}
         </nav>
     );
 }

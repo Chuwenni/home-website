@@ -3,16 +3,26 @@ const express = require("express");
 const app = express();
 const cors = require("cors")
 const PORT = process.env.PORT;
+const cookieparser =require("cookie-parser")
+const corsConfig = require("./src/config/corsConfig")
 const Connect = require("./src/config/database")
-
 Connect();
+
+app.use((req,res,next)=>{
+    console.log("REQUEST:", req.method, req.url);
+    console.log("ORIGIN:", req.headers.origin);
+    next();
+});
+
+app.use(cors(corsConfig))
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieparser());
 
-app.use(cors(require("./src/config/corsConfig")))
 
 app.use(require("./src/routes/authentication"))
+app.use(require("./src/routes/credentials"))
 
 app.get("/", (req,res) => {
     res.send('working')

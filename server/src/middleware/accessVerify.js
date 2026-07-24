@@ -1,4 +1,3 @@
-const cookieparser = require("cookie-parser")
 const jwt = require("jsonwebtoken")
 
 const verifyJWT = (req,res,next) => {
@@ -10,7 +9,7 @@ const verifyJWT = (req,res,next) => {
 
     jwt.verify(accessToken, process.env.ACCESS_SECRET, (err, user) => {
         if(err){
-            return res.status(403).json({message: "Session Not Valid", type: "warning"})
+            return res.status(401).json({message: "Session Not Valid", type: "warning"})
         }
 
         req.user = user
